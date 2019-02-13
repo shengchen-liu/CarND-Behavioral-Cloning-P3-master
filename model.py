@@ -88,7 +88,7 @@ if __name__ == '__main__':
     # start the training
     nvidia_net.fit_generator(generator=generate_data_batch(train_data, data_dir='data_example/data',augment_data=True, bias=CONFIG['bias']),
                              steps_per_epoch=len(train_data)/CONFIG['batchsize'],
-                             nb_epoch=10,
+                             epochs=50,
                              validation_data=generate_data_batch(val_data, data_dir='data_example/data', augment_data=False, bias=1.0),
                              validation_steps=len(val_data)/CONFIG['batchsize'],
                              callbacks=[checkpointer, logger])
