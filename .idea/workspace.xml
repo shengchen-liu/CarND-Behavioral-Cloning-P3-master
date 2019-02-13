@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="127f12c6-c923-43ad-a9c3-607b976be596" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/logs/history.csv" beforeDir="false" afterPath="$PROJECT_DIR$/logs/history.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/model.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/model.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="90" column="37" selection-start-line="90" selection-start-column="37" selection-end-line="90" selection-end-column="37" />
+            <state relative-caret-position="821">
+              <caret line="85" column="86" selection-start-line="85" selection-start-column="86" selection-end-line="85" selection-end-column="86" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -49,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="105">
+              <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -86,9 +85,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/drive.py" />
         <option value="$PROJECT_DIR$/model.py" />
+        <option value="$PROJECT_DIR$/config.py" />
       </list>
     </option>
   </component>
@@ -321,13 +320,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Tensorflow/envPy36/lib/python3.6/site-packages/sklearn/model_selection/_split.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
@@ -344,11 +336,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="90" column="37" selection-start-line="90" selection-start-column="37" selection-end-line="90" selection-end-column="37" />
+        <state relative-caret-position="821">
+          <caret line="85" column="86" selection-start-line="85" selection-start-column="86" selection-end-line="85" selection-end-column="86" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
         </state>
       </provider>
     </entry>

@@ -1,6 +1,6 @@
 from keras.models import Model
 from keras.layers import Input, Convolution2D, Flatten, Dense, Dropout, ELU, Lambda
-from keras.callbacks import ModelCheckpoint, CSVLogger
+from keras.callbacks import ModelCheckpoint, CSVLogger, TensorBoard
 import keras.backend as K
 from config import *
 from load_data import generate_data_batch, split_train_val
@@ -83,6 +83,9 @@ if __name__ == '__main__':
     # define callbacks to save history and weights
     checkpointer = ModelCheckpoint('checkpoints/weights.{epoch:02d}-{val_loss:.3f}.hdf5')
     logger = CSVLogger(filename='logs/history.csv')
+    tflogger = TensorBoard(log_dir='./logs', histogram_freq=0, batch_size=CONFIG['batchsize'], write_graph=True, write_grads=False,
+                                write_images=False, embeddings_freq=0, embeddings_layer_names=None,
+                                embeddings_metadata=None, embeddings_data=None, update_freq='epoch')
 
     print('steps per epoch:', len(train_data)/CONFIG['batchsize'])
     # start the training
@@ -91,4 +94,4 @@ if __name__ == '__main__':
                              epochs=50,
                              validation_data=generate_data_batch(val_data, data_dir='data_example/data', augment_data=False, bias=1.0),
                              validation_steps=len(val_data)/CONFIG['batchsize'],
-                             callbacks=[checkpointer, logger])
+                             callbacks=[checkpointer, logger, tflogger])
