@@ -16,6 +16,10 @@ from keras.models import load_model
 import h5py
 from keras import __version__ as keras_version
 
+from load_data import preprocess
+import cv2
+
+
 sio = socketio.Server()
 app = Flask(__name__)
 model = None
@@ -61,6 +65,13 @@ def telemetry(sid, data):
         imgString = data["image"]
         image = Image.open(BytesIO(base64.b64decode(imgString)))
         image_array = np.asarray(image)
+
+        # training images are loaded in BGR colorspace using cv2 while drive.py load images in RGB to predict the steering angles.
+        # RGB -> BGR
+        # cropping
+        image_array = cv2.cvtColor(image_array, cv2.COLOR_RGB2BGR)
+
+        image_array = preprocess(frame_bgr=image_array, verbose=False)
         steering_angle = float(model.predict(image_array[None, :, :, :], batch_size=1))
 
         throttle = controller.update(float(speed))
@@ -97,19 +108,18 @@ def send_control(steering_angle, throttle):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Remote Driving')
     parser.add_argument(
-        'model',
+        '--model',
         type=str,
         help='Path to model h5 file. Model should be on the same path.'
     )
     parser.add_argument(
-        'image_folder',
+        '--image_folder',
         type=str,
         nargs='?',
         default='',
         help='Path to image folder. This is where the images from the run will be saved.'
     )
     args = parser.parse_args()
-
     # check that model Keras version is same as local Keras version
     f = h5py.File(args.model, mode='r')
     model_version = f.attrs.get('keras_version')
