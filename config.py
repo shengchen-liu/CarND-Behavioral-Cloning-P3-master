@@ -5,7 +5,7 @@ Project 3 configuration and hyperparameters
 NVIDIA_H, NVIDIA_W = 66, 200
 
 CONFIG = {
-    'batchsize': 16,
+    'batchsize': 64,
     'input_width': NVIDIA_W,
     'input_height': NVIDIA_H,
     'input_channels': 3,
