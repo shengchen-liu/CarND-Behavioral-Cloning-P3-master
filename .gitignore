@@ -6,3 +6,5 @@ models
 *.p
 data/*
 data_example
+checkpoints
+logs
