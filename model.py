@@ -66,6 +66,8 @@ def get_nvidia_model(summary=True):
 if __name__ == '__main__':
     if not os.path.exists('logs'):
         os.mkdir('logs')
+    if not os.path.exists('checkpoints'):
+        os.mkdir('checkpoints')
 
     # split udacity csv data into training and validation
     train_data, val_data = split_train_val(csv_driving_data='data_example/data/driving_log.csv')
