@@ -84,10 +84,11 @@ if __name__ == '__main__':
     checkpointer = ModelCheckpoint('checkpoints/weights.{epoch:02d}-{val_loss:.3f}.hdf5')
     logger = CSVLogger(filename='logs/history.csv')
 
+    print('steps per epoch:', len(train_data)/CONFIG['batchsize'])
     # start the training
     nvidia_net.fit_generator(generator=generate_data_batch(train_data, data_dir='data_example/data',augment_data=True, bias=CONFIG['bias']),
-                         samples_per_epoch=len(train_data),
-                         nb_epoch=10,
-                         validation_data=generate_data_batch(val_data, data_dir='data_example/data', augment_data=False, bias=1.0),
-                         nb_val_samples=len(val_data),
-                         callbacks=[checkpointer, logger])
+                             steps_per_epoch=len(train_data)/CONFIG['batchsize'],
+                             nb_epoch=10,
+                             validation_data=generate_data_batch(val_data, data_dir='data_example/data', augment_data=False, bias=1.0),
+                             validation_steps=len(val_data)/CONFIG['batchsize'],
+                             callbacks=[checkpointer, logger])
