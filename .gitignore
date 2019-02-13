@@ -7,4 +7,4 @@ models
 data/*
 data_example
 checkpoints
-logs
+logs/*
