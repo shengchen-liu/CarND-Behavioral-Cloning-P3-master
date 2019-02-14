@@ -8,3 +8,5 @@ data/*
 data_example
 checkpoints
 logs/*
+*.mp4
+*.jpg

@@ -1,6 +1,6 @@
 from keras.models import Model
 from keras.layers import Input, Convolution2D, Flatten, Dense, Dropout, ELU, Lambda
-from keras.callbacks import ModelCheckpoint, CSVLogger, TensorBoard
+from keras.callbacks import ModelCheckpoint, CSVLogger, TensorBoard, LearningRateScheduler
 import keras.backend as K
 from config import *
 from load_data import generate_data_batch, split_train_val
@@ -86,6 +86,9 @@ if __name__ == '__main__':
     tflogger = TensorBoard(log_dir='./logs', histogram_freq=0, batch_size=CONFIG['batchsize'], write_graph=True, write_grads=False,
                                 write_images=False, embeddings_freq=0, embeddings_layer_names=None,
                                 embeddings_metadata=None, embeddings_data=None, update_freq='epoch')
+    #learning rate
+    # learning schedule callback
+    lrate = LearningRateScheduler(step_decay)
 
     print('steps per epoch:', len(train_data)/CONFIG['batchsize'])
     # start the training
