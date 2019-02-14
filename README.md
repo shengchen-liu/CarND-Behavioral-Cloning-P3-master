@@ -74,7 +74,7 @@ Network architecture is borrowed from the aforementioned [NVIDIA paper](https://
 
 The architecture is shown below:
 
-![alt_text] [image5]
+![alt_text][image5]
 
 Input normalization is implemented through a `Lambda` layer, which constitutes the first layer of the model. In this way input is standardized such that lie in the range [-1, 1]: of course this works as long as the frame fed to the network is in range [0, 255].
 
