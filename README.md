@@ -17,7 +17,13 @@
 
 To view the video on Youtube, click the following image:
 
-[![IMAGE ALT TEXT HERE](./test_videos_output/project_video.gif)](https://youtu.be/TVTIUdusZGc) 
+* Training for 38 epochs:
+
+[![IMAGE ALT TEXT HERE](videos/CarND_Behavioral_Clone_epoch38.gif)](https://youtu.be/YCcv6WRpUYE) 
+
+* Training for 1 epoch:
+
+[![IMAGE ALT TEXT HERE](videos/CarND_Behavioral_Clone_epoch1.gif)](https://youtu.be/99rXGjsQGUY) 
 
 **Behavioral Cloning Project**
 
