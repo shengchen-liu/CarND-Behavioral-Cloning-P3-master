@@ -5,8 +5,9 @@ import keras.backend as K
 from config import *
 from load_data import generate_data_batch, split_train_val
 import os
+import math
 
-def get_nvidia_model(summary=True):
+def get_net(summary=True):
     """
     Get the keras Model corresponding to the NVIDIA architecture described in:
     Bojarski, Mariusz, et al. "End to end learning for self-driving cars."
@@ -62,6 +63,13 @@ def get_nvidia_model(summary=True):
 
     return model
 
+def step_decay(epoch):
+   initial_lrate = 0.01
+   drop = 0.5
+   epochs_drop = 10.0
+   lrate = initial_lrate * math.pow(drop,
+           math.floor((1+epoch)/epochs_drop))
+   return lrate
 
 if __name__ == '__main__':
     if not os.path.exists('logs'):
@@ -73,12 +81,12 @@ if __name__ == '__main__':
     train_data, val_data = split_train_val(csv_driving_data='data_example/data/driving_log.csv')
 
     # get network model and compile it (default Adam opt)
-    nvidia_net = get_nvidia_model(summary=True)
-    nvidia_net.compile(optimizer='adam', loss='mse')
+    net = get_net(summary=True)
+    net.compile(optimizer='adam', loss='mse')
 
     # json dump of model architecture
     with open('logs/model.json', 'w') as f:
-        f.write(nvidia_net.to_json())
+        f.write(net.to_json())
 
     # define callbacks to save history and weights
     checkpointer = ModelCheckpoint('checkpoints/weights.{epoch:02d}-{val_loss:.3f}.hdf5')
@@ -92,9 +100,9 @@ if __name__ == '__main__':
 
     print('steps per epoch:', len(train_data)/CONFIG['batchsize'])
     # start the training
-    nvidia_net.fit_generator(generator=generate_data_batch(train_data, data_dir='data_example/data',augment_data=True, bias=CONFIG['bias']),
-                             steps_per_epoch=len(train_data)/CONFIG['batchsize'],
-                             epochs=50,
-                             validation_data=generate_data_batch(val_data, data_dir='data_example/data', augment_data=False, bias=1.0),
-                             validation_steps=len(val_data)/CONFIG['batchsize'],
-                             callbacks=[checkpointer, logger, tflogger])
+    net.fit_generator(generator=generate_data_batch(train_data, data_dir='data_example/data', augment_data=True, bias=CONFIG['bias']),
+                      steps_per_epoch=len(train_data)/CONFIG['batchsize'],
+                      epochs=50,
+                      validation_data=generate_data_batch(val_data, data_dir='data_example/data', augment_data=False, bias=1.0),
+                      validation_steps=len(val_data)/CONFIG['batchsize'],
+                      callbacks=[checkpointer, logger, tflogger, lrate])
