@@ -18,7 +18,12 @@ from keras import __version__ as keras_version
 
 from load_data import preprocess
 import cv2
+import tensorflow as tf
 
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+allow_growth_session = tf.Session(config=config)
+tf.keras.backend.set_session(allow_growth_session)
 
 sio = socketio.Server()
 app = Flask(__name__)
@@ -124,6 +129,7 @@ if __name__ == '__main__':
     f = h5py.File(args.model, mode='r')
     model_version = f.attrs.get('keras_version')
     keras_version = str(keras_version).encode('utf8')
+
 
     if model_version != keras_version:
         print('You are using Keras version ', keras_version,

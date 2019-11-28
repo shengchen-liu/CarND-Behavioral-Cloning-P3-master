@@ -3,7 +3,7 @@
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
 ---
-[//]: # (Image References)
+[//]: # "Image References"
 
 [image0]: ./examples/pipeline.png "Pipeline"
 [image1]: ./examples/net.png "Model Visualization"
@@ -36,7 +36,7 @@ The goals / steps of this project are the following:
 
 ![alt text][image0]
 
-[//]: # (Image References)
+[//]: # "Image References"
 
 
 ### The dataset
@@ -65,7 +65,7 @@ My project includes the following files:
 #### 2. Submission includes functional code
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
 ```sh
-python drive.py model.hdf5 run_1
+python drive.py --model=model.hdf5 --image_folder=run_1
 ```
 
 #### 3. Submission code is usable and readable
@@ -118,7 +118,7 @@ Here is a visualization of the architecture (note: visualizing the architecture 
 
 ![alt text][image1]
 
-#### 3. Creation of the Training Set & Training Process
+#### 3. Training data
 
 To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
 
@@ -141,7 +141,7 @@ I finally randomly shuffled the data set and put Y% of the data into a validatio
 
 I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was Z as evidenced by ... I used an adam optimizer so that manually training the learning rate wasn't necessary.
 
-One of my favorite components of Tensorflow is Tensorbard.  With Tensorbard, model structure and progress can be easily visualized:
+One of my favorite components of Tensorflow is Tensorboard.  With Tensorboard, model structure and progress can be easily visualized:
 
 Train loss:
 
